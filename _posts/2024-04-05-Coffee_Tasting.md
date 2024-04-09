@@ -7,7 +7,7 @@ title: "커피 테이스팅 노트"
 
 #### 주요 기능 (Ver. 1)
 
-- 일기 작성.
+- 일기 작성
   - 5단계 지표를 통해서 커피 맛 기록
   - 먹었던 카페 (집 // 구글 지도와의 연동)
   - 간단한 리뷰 작성 (사진과 글)
@@ -28,3 +28,7 @@ title: "커피 테이스팅 노트"
 - Docker / Kubenetes / Nginx
 - GCP
 - MySQL / Redis
+
+#### Reference
+
+- https://corgis-edu.github.io/corgis/csv/coffee/
