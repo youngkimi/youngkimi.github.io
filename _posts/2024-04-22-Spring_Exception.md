@@ -1,3 +1,8 @@
+---
+layout: single
+title: "스프링의 예외 처리"
+---
+
 ## 스프링의 예외처리 (Exception)
 
 ### 예외 종류
