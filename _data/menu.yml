@@ -23,4 +23,4 @@ entries:
           limit: 5
           show_more: true
           show_more_text: See more monitoring...
-          show_more_url: /monitoring-archive/
+          show_more_url: monitoring-archive.html
