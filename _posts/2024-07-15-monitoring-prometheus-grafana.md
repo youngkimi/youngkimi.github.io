@@ -1,29 +1,48 @@
 ---
 layout: post
-title: "Language Tests"
-category: example2
+title: "monitoring - prometheus, grafana"
+category: monitoring
 ---
 
-Note: I took this test post from [moving](https://github.com/huangyz0918/moving), which is another Jekyll theme which is better that this one so I should not have linked it because now you will decide to use it instead of mine.
+#### Note
 
-### 1. 日本語テスト
+개발 완료한 백엔드 서버의 성능을 측정, 개선하기 위해서 모니터링 프로그램인 [프로메테우스](https://prometheus.io/docs/introduction/overview/)와 [그라파나](https://grafana.com/docs/grafana/latest/)를 사용하였다. 병목을 확인하기 위해서 성능 측정의 대상은 웹 서버 (Nginx), WAS (Spring), DB (MySQL)로 설정하였다.
 
-This is a Japanese test post to show you how japanese is displayed.
+I used Prometheus and Grafana, monitoring tools, to measure and improve the performance of the backend server. To identify bottlenecks, I set up performance monitoring for the web server (Nginx), WAS (Spring), and DB (MySQL).
 
-私は昨日ついにその助力家というのの上よりするたなけれ。
-最も今をお話団はちょうどこの前後なかろでくらいに困りがいるたをは帰着考えたなかって、そうにもするでうたらない。
-がたを知っないはずも同時に九月をいよいよたありた。
+### 1. how it works
 
-もっと槙さんにぼんやり金少し説明にえた自分大した人私か影響にというお関係たうませないが、この次第も私か兄具合に使うて、槙さんののに当人のあなたにさぞご意味と行くて私個人が小尊敬を聴いように同時に同反抗に集っだうて、いよいよまず相当へあっうからいだ事をしでなけれ。
+### 2. docker-compose
 
-> それでそれでもご時日をしはずはたったいやと突き抜けるますて、その元がは行ったてという獄を尽すていけですた。
+```yml
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: ./prometheus/prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+    command:
+      - "--web.enable-lifecycle" # enable config files reloaded without api restart
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--web.external-url=/prometheus/"
+      - "--web.route-prefix=/prometheus/"
+    ports:
+      - 19091:9090
 
-この中道具の日その学校はあなたごろがすまなりかとネルソンさんの考えるですん、辺の事実ないというご盲従ありたですと、爺さんのためが薬缶が結果までの箸の当時してならて、多少の十月にためからそういう上からとにかくしましないと触れべきものたで、ないうですと多少お人達したのでたた。
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    restart: unless-stopped
+    volumes:
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    ports:
+      - 19092:3000
+```
 
-From [すぐ使えるダミーテキスト - 日本語 Lorem ipsum.](http://lipsum.sugutsukaeru.jp/index.cgi) 
-
-
-### 2. 繁体中文测试
+### 3. 繁体中文测试
 
 This is a chinese test post to show you how chinese is displayed.
 
@@ -37,15 +56,13 @@ This is a chinese test post to show you how chinese is displayed.
 
 > 工步他始能詩的，裝進分星海演意學值例道……於財型目古香亮自和這乎？化經溫詩。只賽嚴大一主價世哥受的沒有中年即病行金拉麼河。主小路了種就小為廣不？
 
-From [亂數假文產生器 - Chinese Lorem Ipsum.](http://www.richyli.com/tool/loremipsum/) 
+From [亂數假文產生器 - Chinese Lorem Ipsum.](http://www.richyli.com/tool/loremipsum/)
 
-
-
-### 3. 简体中文测试
+### 4. 简体中文测试
 
 效育声去本义然空，各值太法心想，场强实地。 题铁习点儿表管少间千，只何政亲织文意部，千影画派证男须。 手反取长风治增非等直难群，连取及天他己事头级，影数弦适把气快目人。 专议以省通引而千个，格则口段度样水热马，地教少务改磨。 包思外心半院应她算斯，市外会快记路又火学，劳如肃它准众丧边。
-   
-  > 团算部住县单总边素格军所，合音府教看和广光采率位转，位用品根确针百。 证其标元角工方海接交他，论象切万世认一响义，治然身本风弦带题。 向我次路持加北，她不反心。 说总元军例市决，现始即算证养，规走还壳。
+
+> 团算部住县单总边素格军所，合音府教看和广光采率位转，位用品根确针百。 证其标元角工方海接交他，论象切万世认一响义，治然身本风弦带题。 向我次路持加北，她不反心。 说总元军例市决，现始即算证养，规走还壳。
 
 因林可相儿应满军，热影省条律因资再，整肃赤心将届。 局广写两量备验还，南教事争工民的，备进研上布。 素身电活非直，速这区交示从，百层达。 资量那毛什京身，白这快。 半打容三手开常价或，手严量般象式效，名可重芽门适。 来设什一我么，光界美么或，住身式准。 造酸改表委验众办地百养，商物战众本列听度名院，制压录丽快与千机内。 住需当四议决得命南然照按民置，当住命形金决否矿单外。 气象理离开新集增际，三划方工义很年关，拉许准孝口。 构片出干计由备美打养，持育总指承入无己。
 
