@@ -8,17 +8,19 @@ entries:
       - title: github repo
         url: https://github.com/youngkimi/
 
-  - title: all posts
-    post_list:
-      limit: 5
-      show_more: true
-      show_more_text: See archive...
-      show_more_url: /archive.md
+  # - title: all posts
+  #   post_list:
+  #     limit: 5
+  #     show_more: true
+  #     show_more_text: See archive...
+  #     show_more_url: /archive.md
 
   - title: posts by category
-    post_list:
-      category: monitoring
-      limit: 5
-      show_more: true
-      show_more_text: See more monitoring...
-      show_more_url: /monitoring-archive.md
+    entries:
+      - title: monitoring
+        post_list:
+          category: monitoring
+          limit: 5
+          show_more: true
+          show_more_text: See more monitoring...
+          show_more_url: monitoring-archive.html
