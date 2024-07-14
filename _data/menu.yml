@@ -18,6 +18,7 @@ entries:
   - title: posts by category
     post_list:
       category: monitoring
+      limit: 5
       show_more: true
-      show_more_text: See more posts...
+      show_more_text: See more monitoring...
       show_more_url: monitoring-archive.html
