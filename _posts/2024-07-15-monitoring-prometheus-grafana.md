@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "monitoring - prometheus, grafana"
+title: monitoring - prometheus, grafana
 category: monitoring
 ---
 
