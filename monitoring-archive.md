@@ -1,5 +1,6 @@
 ---
 layout: archive
-title: monitoring
+title: monitoring posts
 which_category: monitoring
+permalink: /monitoring-archive/
 ---
