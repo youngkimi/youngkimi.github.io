@@ -9,14 +9,14 @@ entries:
         url: https://github.com/youngkimi/
 
   - title: all posts
-    post_list: true
-      # limit: 5
+    post_list:
+      limit: 5
       show_more: true
       show_more_text: See archive...
       show_more_url: archive.html
 
   - title: monitoring
-    post_list: true
+    post_list:
       category: monitoring
       show_more: true
       show_more_text: See more monitoring...
