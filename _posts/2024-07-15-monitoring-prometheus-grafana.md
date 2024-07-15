@@ -14,7 +14,7 @@ I used [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Graf
 
 ### 2. docker-compose
 
-```yml
+```yaml
 services:
   prometheus:
     container_name: prometheus
