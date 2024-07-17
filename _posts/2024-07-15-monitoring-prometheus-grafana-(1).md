@@ -24,6 +24,14 @@ I used [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Graf
 
 #### spring-actuator.yml
 
+앞서 말한 exporter의 역할을 한다. 프로메테우스가 사용할 수 있는 endpoint를 설정한다.
+
+- exporter의 엔드포인트로 접속할 수 있는 base-path 설정을 했다. `/system` 경로로 접근하면 필요한 메트릭을 수집할 수 있다.
+- 메트릭 노출을 위해서는 `enable`, `exposure` 설정 모두를 해주어야 한다.
+- 메트릭 중에서는 상당히 민감한 정보(env, info ...)를 포함하는 것도 있으니, 외부 노출에 주의하자.
+- Spring Security 등과 함께 사용하여 메트릭 수집 주체의 인가 여부를 항상 확인할 것.
+- 이를 위해 `Admin`의 JWT token을 헤더로 같이 전송하였다.
+
 ```yml
 management:
   endpoints:
@@ -84,6 +92,20 @@ management:
 
 #### docker-compose.monitor.yml
 
+프로메테우스의 그라파나 컨테이너를 생성할 수 있는 파일. 도커에 대해서 설명하지는 않겠다.
+
+볼륨(bind) 설정을 통해서 내부 설정 파일을 컨테이너 내부로 진입하지 않고서도 수정할 수 있도록 설정하였다. 이후 커맨드 옵션에 `--web.enable-lifecycle`을 설정하여, 컨테이너 재가동 없이 런타임에 바뀐 설정을 바로 적용할 수 있도록 했다.
+
+이후 설정 파일의 위치(`config.file=`), 프로메테우스의 외부 노출 url(`web.route-prefix=`), 내부 route 접두사(`web.route-prefix=`) 등을 설정해주었다. 내부 route 접두사는 nginx 등의 웹 서버를 사용하여 요청 경로를 라우팅하여 경로를 조작하는 경우 (redirect 등을 사용한다거나) 세팅해주어야 한다.
+
+나는 `/prometheus/` 경로를 `/`등으로 strip off 하거나 하지 않았으므로, 외부 경로와 동일하게 설정해주었다. 사실 `web.route-prefix=`와 같은 값으로 기본 설정되므로 나는 설정할 필요가 없었다.
+
+그라파나는 [데이터 소스를 관리할 수 있는](https://grafana.com/docs/grafana/latest/administration/provisioning/) 볼륨만 설정해두었다.
+
+> You can manage data sources in Grafana by adding YAML configuration files in the provisioning/datasources directory. Each config file can contain a list of datasources to add or update during startup. If the data source already exists, Grafana reconfigures it to match the provisioned configuration file.
+
+> It's better to set a volume directory to keep the logs when the container shuts down.
+
 ```yml
 services:
   prometheus:
@@ -112,6 +134,32 @@ services:
       - 19092:3000
 ```
 
-> docker-compose -f docker-compose.monitor.yml up -d
-
 #### prometheus.yml
+
+프로메테우스의 설정 정보를 담은 파일. 위에서 경로 설정할 때 적어두었던 그 파일이다.
+
+```yml
+global:
+  scrape_interval: 15s # 얼마나 자주 스크랩 할 것인가
+  scrape_timeout: 10s # 스크랩 타임아웃 시간
+  evaluation_interval: 15s # rules (쿼리, 알림) 평가 시간.
+alerting: # 알림 매니저 설정은 아직 진행하지 않았다.
+  alertmanagers:
+    - static_configs:
+        - targets: []
+      # scheme: http
+      # timeout: 10s
+      # api_version: v1
+scrape_configs:
+  - job_name: spring-app # job의 이름.
+    honor_timestamps: true # true 설정 시, 타겟에서 제공하는 타임스탬프, false는 prometheus의 타임스탬프를 사용.
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /system/prometheus
+    scheme: http
+    static_configs:
+      - targets:
+          -  # 타겟 도메인
+```
+
+위에서 생성한 프로메테우스
