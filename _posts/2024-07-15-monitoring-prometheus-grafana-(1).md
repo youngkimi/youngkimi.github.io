@@ -104,6 +104,8 @@ management:
 
 > You can manage data sources in Grafana by adding YAML configuration files in the provisioning/datasources directory. Each config file can contain a list of datasources to add or update during startup. If the data source already exists, Grafana reconfigures it to match the provisioned configuration file.
 
+> 컨테이너가 종료될 때 로그를 유지하기 위해 볼륨 디렉토리를 설정하는 것이 좋다.
+>
 > It's better to set a volume directory to keep the logs when the container shuts down.
 
 ```yml
@@ -162,4 +164,34 @@ scrape_configs:
           -  # 타겟 도메인
 ```
 
-위에서 생성한 프로메테우스
+메트릭을 수집 주기(scrape_interval), 스크랩의 타임아웃 시간(scrape_timeout)을 전역적으로 설정할 수도, 아래에서 job 별로 설정해줄 수도 있다. scrape_timeout은 scrape_interval 보다 짧아야 한다.
+
+alerting 부분에서 알림 매니저에 관한 설정을 할 수 있다. 모니터링 중 임계치에 도달하면 관련 알림을 전송할 수 있다. email 뿐 아니라, slack, discord 등의 [채널](https://prometheus.io/docs/alerting/latest/configuration/)을 통해서도 알림을 전달할 수 있다.
+
+scrape_configs 에서 스크랩 Job을 정의하고 설정할 수 있다. 메트릭의 대상이 되는 path, 타겟 도메인과 scheme을 지정하고, 전역적으로 설정했던 메트릭 수집 주기, 타임아웃 간격을 Job 마다 설정할 수도 있다.
+
+#### nginx.conf
+
+```
+location /system/ {
+    proxy_pass      http://release-main-server;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+
+location /prometheus/ {
+    proxy_pass      http://prometheus;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+사용 중인 nginx의 일부이다.`Prometheus`는 위 설정된 `/system/` 경로로 리버스 프록시 되어 서버에 접근, 메트릭을 수집한다. 아래 `/prometheus/` 경로를 통해 프로메테우스 서버에 접근할 수 있다.
+
+> `release-main-server`, `prometheus`는 설정 파일에서 upstream 블록으로 정의되어 있다.
+>
+> `release-main-server` and `prometheus` are defined as upstream blocks in the Nginx configuration file.
