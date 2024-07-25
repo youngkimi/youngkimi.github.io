@@ -124,10 +124,6 @@ div.highlighter-rouge code {
 
 @import "syntax-highlighting-light";
 
-@media (prefers-color-scheme: dark) {
-  @import "syntax-highlighting-dark";
-}
-
 blockquote {
   font-style: italic;
   border: thin solid black;
