@@ -80,7 +80,7 @@ management:
 > Since Actuator provides various information about the server, it's important to prioritize security. You should separate the management port from the service port and use security mechanisms to enforce authentication and authorization when accessing Actuator endpoints. Additionally, consider changing the base path from the default Actuator path to enhance security.
 
 이제 설정한 endpoint들로 `GET`하면 메트릭을 확인할 수 있다.
+이제 Prometheus와 Grafana를 실행해보자.
 
 You can `GET` metrics by accessing the endpoints the you've set up.
-
-이제 Prometheus와 Grafana를 실행해보자.
+Now Let's Deploy Prometheus and Grafana.
