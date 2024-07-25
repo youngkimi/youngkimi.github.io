@@ -4,7 +4,7 @@ title: "monitoring - prometheus, grafana (2)"
 category: monitoring
 ---
 
-### 2. setting up the exporters
+### 2. set up the exporters
 
 #### spring-actuator.yml
 
