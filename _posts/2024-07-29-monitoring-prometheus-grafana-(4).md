@@ -82,8 +82,8 @@ This is part of the nginx configuration in use. Grafana is reverse proxied to th
 ```
   location /grafana/ {
     proxy_pass 	http://grafana;
-	  proxy_set_header Host $host;
-	  rewrite  ^/grafana/(.*)  /$1 break;
+    proxy_set_header Host $host;
+    rewrite  ^/grafana/(.*)  /$1 break;
   }
 
   # Proxy Grafana Live WebSocket connections.
