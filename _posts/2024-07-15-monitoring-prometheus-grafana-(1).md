@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "monitoring - prometheus, grafana (1)"
+title: "monitoring - what is prometheus&grafana, and how it works"
+subtitle: "모니터링: 프로메테우스와 그라파나"
 category: monitoring
 ---
 
@@ -10,7 +11,7 @@ category: monitoring
 
 I used [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Grafana](https://grafana.com/docs/grafana/latest/), monitoring tools, to measure and improve the performance of the backend server. To identify bottlenecks, I set up performance monitoring for the web server (Nginx), WAS (Spring), and DB (MySQL).
 
-### 1. how it works
+### 1. 프로메테우스와 그라파나 prometheus & grafana
 
 프로메테우스는 시계열 기반 오픈소스 모니터링 시스템이다. 메트릭을 타임 스탬프와 함께 수집한다. 이런 메트릭을 분석하면 서비스의 현황을 파악하고 문제를 대비할 수 있으며, 문제 발생 시 원인을 파악하고 해결할 수 있다.
 

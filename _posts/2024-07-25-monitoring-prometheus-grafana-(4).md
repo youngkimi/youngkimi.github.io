@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "monitoring - grafana"
+title: "monitoring - grafana deployments"
+subtitle: "모니터링: 그라파나 실행과 설정"
 category: monitoring
 ---
 
-### 3. deploy Grafana
+### 4. deploy Grafana
 
 #### docker-compose.monitor.yml
 

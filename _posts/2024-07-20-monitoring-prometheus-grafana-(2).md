@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "monitoring - prometheus, grafana (2)"
+title: "monitoring - actuator configuration"
+subtitle: "모니터링: 스프링 액추에이터 설정"
 category: monitoring
 ---
 
 ### 2. set up the exporters
 
-#### spring-actuator.yml
+#### 스프링 액추에이터 (spring-actuator.yml)
 
 앞서 말한 exporter를 설정한다. 프로메테우스가 사용할 수 있는 endpoint(`/prometheus`)를 노출한다.
 

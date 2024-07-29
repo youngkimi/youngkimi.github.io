@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "monitoring - prometheus, grafana (3)"
+title: "monitoring - prometheus deploys(3)"
+subtitle: "모니터링: 프로메테우스 실행과 설정"
 category: monitoring
 ---
 
