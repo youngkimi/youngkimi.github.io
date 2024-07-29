@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "monitoring - prometheus deploys(3)"
+title: "monitoring - prometheus deployments"
 subtitle: "모니터링: 프로메테우스 실행과 설정"
 category: monitoring
 ---
 
-### 3. deploy Prometheus
+### 3. 프로메테우스 실행. deploy Prometheus
 
 #### docker-compose.monitor.yml
 
