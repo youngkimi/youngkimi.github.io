@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "monitoring - what is prometheus&grafana, and how it works"
+title: "monitoring - prometheus and grafana"
 subtitle: "모니터링: 프로메테우스와 그라파나"
 category: monitoring
 ---
