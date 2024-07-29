@@ -49,7 +49,7 @@ services:
 
 #### grafana.ini
 
-reverse proxy를 위해 `grafana.ini`에서 손 봐야할 부분은 크게 세 군데이다. `[server]` 부분의 `http_port`, `domain`, `root_url`을 본인 서비스에 맞추어 수정해주면 된다. 나는 port는 변경하지 않았지만, 별도로 사용하는 도메인이 있어 수정해주었다. 아래의 localhost는 예시이므로, 본인의 도메인(example.com)을 적으면 된다. 이어 root_url도 본인이 reverse proxy 하고자 하는 경로에 맞추어 수정해주면 된다. 기본 값은 `%(protocol)s://%(domain)s:%(http_port)s/` 일 것이다.
+reverse proxy를 위해 `grafana.ini`에서 손 봐야할 부분은 크게 세 군데이다. `[server]` 부분의 `http_port`, `domain`, `root_url`을 본인 서비스에 맞추어 수정해주면 된다. 나는 port는 변경하지 않았지만, 별도로 사용하는 도메인이 있어 수정해주었다. 아래의 localhost는 예시이므로, 본인의 도메인(example.com)을 적으면 된다. 이어 root_url도 본인이 reverse proxy 하고자 하는 경로에 맞추어 수정해주면 된다. 기본 값은 `%(protocol)s://%(domain)s:%(http_port)s/`이다.
 
 ```ini
 # The ip address to bind to, empty will bind to all interfaces
