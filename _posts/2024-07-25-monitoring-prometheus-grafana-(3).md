@@ -4,7 +4,7 @@ title: "monitoring - prometheus, grafana (3)"
 category: monitoring
 ---
 
-### 3. deploy Prometheus and Grafana
+### 3. deploy Prometheus
 
 #### docker-compose.monitor.yml
 
@@ -18,7 +18,7 @@ category: monitoring
 
 프로메테우스가 종료되면 기존 데이터가 날아가므로, 컨테이너 볼륨 설정을 추가했다. 참고로 아래 사용하는 이미지에서는 [데이터 스토리지 디렉토리의 권한 설정](https://stackoverflow.com/questions/50009065/how-to-persist-data-in-prometheus-running-in-a-docker-container)이 추가적으로 필요할 수 있다.
 
-그라파나는 [데이터 소스를 관리할 수 있는](https://grafana.com/docs/grafana/latest/administration/provisioning/) 볼륨만 설정해두었다.
+그라파나는 [데이터 소스를 관리할 수 있는](https://grafana.com/docs/grafana/latest/administration/provisioning/) 볼륨과 설정 파일인 `grafana.ini` 를 바인드 해두었다. 다음 글에서 살펴보자.
 
 I won't explain Docker here.
 
@@ -30,9 +30,7 @@ Actually, I didn't need to set up the `web.route-prefix=` because I didn't route
 
 Since the data is lost when it shuts down, I added container volume settings. Note that for the Prometheus' image used below, you might need to set [additional permissions](https://stackoverflow.com/questions/50009065/how-to-persist-data-in-prometheus-running-in-a-docker-container).
 
-For Grafana, I only set up a volume that can manage datasources.
-
-> You can manage data sources in Grafana by adding YAML configuration files in the provisioning/datasources directory. Each config file can contain a list of datasources to add or update during startup. If the data source already exists, Grafana reconfigures it to match the provisioned configuration file.
+For Grafana, I set up a volume to manage datasources and binded `grafana.ini` outside the container. We'll find out how to set it up for reverse proxy.
 
 ```yml
 services:
@@ -58,6 +56,9 @@ services:
     image: grafana/grafana
     restart: unless-stopped
     volumes:
+      - type: bind
+        source: /home/monitoring/grafana/grafana.ini
+        target: /usr/share/grafana/conf/defaults.ini
       - /home/monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
     ports:
       - 19092:3000
