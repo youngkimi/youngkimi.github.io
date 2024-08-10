@@ -24,7 +24,7 @@ entries:
 
   - title: operating system
     post_list:
-      category: monitoring
+      category: Operating System
       show_more: true
       show_more_text: See more OS...
       # show_more_url: monitoring-archive.html
