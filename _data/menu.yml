@@ -21,3 +21,10 @@ entries:
       show_more: true
       show_more_text: See more monitoring...
       show_more_url: monitoring-archive.html
+
+  - title: operating system
+    post_list:
+      category: monitoring
+      show_more: true
+      show_more_text: See more OS...
+      # show_more_url: monitoring-archive.html
