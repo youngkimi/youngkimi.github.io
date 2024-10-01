@@ -28,11 +28,9 @@ entries:
         limit: 5
         category: jpa
         show_more: true
-        show_more_text: See more jpa...
 
   - title: operating system
     post_list:
         limit: 5
         category: Operating System
         show_more: true
-        show_more_text: See more OS...
