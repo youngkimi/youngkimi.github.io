@@ -22,15 +22,14 @@ entries:
       show_more_text: See more monitoring...
       show_more_url: monitoring-archive.html
 
-  - title: operating system
-    post_list:
-      category: Operating System
-      show_more: true
-      show_more_text: See more OS...
-      # show_more_url: monitoring-archive.html
-
   - title: spring jpa
     post_list:
       category: jpa
       show_more: true
       show_more_text: See more jpa...
+
+  - title: operating system
+    post_list:
+      category: Operating System
+      show_more: true
+      show_more_text: See more OS...
