@@ -2,34 +2,37 @@
 # https://github.com/riggraz/no-style-please#customize-the-menu
 
 entries:
-  - title: info
-    entries:
-      - title: backend developer, spring, java, kotlin
-      - title: github repo
-        url: https://github.com/youngkimi/
+    - title: info
+        entries:
+        - title: backend developer, spring, java, kotlin
+        - title: github repo
+            url: https://github.com/youngkimi/
 
   - title: all posts
     post_list:
-      limit: 5
-      show_more: true
-      show_more_text: See archive...
-      show_more_url: archive.html
+        limit: 5
+        show_more: true
+        show_more_text: See archive...
+        show_more_url: archive.html
 
   - title: monitoring
     post_list:
-      category: monitoring
-      show_more: true
-      show_more_text: See more monitoring...
-      show_more_url: monitoring-archive.html
+        limit: 5
+        category: monitoring
+        show_more: true
+        show_more_text: See more monitoring...
+        show_more_url: monitoring-archive.html
 
   - title: spring jpa
     post_list:
-      category: jpa
-      show_more: true
-      show_more_text: See more jpa...
+        limit: 5
+        category: jpa
+        show_more: true
+        show_more_text: See more jpa...
 
   - title: operating system
     post_list:
-      category: Operating System
-      show_more: true
-      show_more_text: See more OS...
+        limit: 5
+        category: Operating System
+        show_more: true
+        show_more_text: See more OS...
