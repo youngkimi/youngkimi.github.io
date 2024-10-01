@@ -2,7 +2,7 @@
 layout: post
 title: "jpa - persistence"
 subtitle: "jpa - persistence"
-category: jpa
+category: [jpa]
 ---
 
 # jpa - persistence
