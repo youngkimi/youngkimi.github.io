@@ -1,7 +1,7 @@
 ---
 title: "02. URL & Resource"
 date: 2025-06-04 17:00:00 +/-TTTT
-categories: [Book, HTTP Definitive Guide]
+categories: [Book, HTTP The Definitive Guide]
 tags: [jekyll, chirpy, blog]
 math: true
 toc: true
