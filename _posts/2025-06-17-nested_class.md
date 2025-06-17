@@ -7,8 +7,8 @@ math: true
 toc: true
 pin: true
 image:
-  path: ../assets/image/icon/kotlin.svg
-  alt: squirrel_book
+  path: ../assets/image/icons/kotlin.svg
+  alt: kotlin
 ---
 
 중첩 클래스(Nested Class)는 한 클래스 내부에서 정의된 클래스이다. 중첩 클래스를 정적으로 선언하냐에 따라 그 성질이 다르다. 
