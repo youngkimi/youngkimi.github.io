@@ -2,7 +2,7 @@
 title: "01. Http Overview"
 date: 2025-06-01 17:00:00 +/-TTTT
 categories: [Book, HTTP The Definitive Guide]
-tags: [jekyll, chirpy, blog]
+tags: [http, network]
 math: true
 toc: true
 pin: true
