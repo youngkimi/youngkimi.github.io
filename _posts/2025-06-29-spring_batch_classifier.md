@@ -1,6 +1,6 @@
 ---
 title: "Spring Batch Classifier"
-date: 2025-06-29 17:00:00 +/-TTTT
+date: 2025-06-28 17:00:00 +/-TTTT
 categories: [Spring, Batch]
 tags: [spring, batch]
 math: true
