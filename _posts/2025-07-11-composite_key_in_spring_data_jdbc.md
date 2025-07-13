@@ -6,6 +6,7 @@ tags: [spring, spring-data, jdbc, composite-key]
 math: true
 toc: true
 pin: true
+comments: true
 image:
   path: ../assets/image/icons/spring-data.webp
   alt: spring_data

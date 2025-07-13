@@ -6,6 +6,7 @@ tags: [spring, batch]
 math: true
 toc: true
 pin: true
+comments: true
 image:
   path: ../assets/image/icons/spring-batch.webp
   alt: spring_batch

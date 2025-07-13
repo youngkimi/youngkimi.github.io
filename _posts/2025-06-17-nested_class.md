@@ -6,6 +6,7 @@ tags: [java, kotlin]
 math: true
 toc: true
 pin: true
+comments: true
 image:
   path: ../assets/image/icons/kotlin.svg
   alt: kotlin

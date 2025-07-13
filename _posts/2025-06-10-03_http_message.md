@@ -6,6 +6,7 @@ tags: [http, network, book]
 math: true
 toc: true
 pin: true
+comments: true
 image:
   path: ../assets/image/book/http-definitive-guide.webp
   alt: squirrel_book
