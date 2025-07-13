@@ -1,6 +1,6 @@
 ---
 title: "Spring Data JDBC에서 복합키(Composite Key) 사용하기"
-date: 2025-07-12 17:00:00 +0900
+date: 2025-07-11 17:00:00 +0900
 categories: [Spring, Data, JDBC]
 tags: [spring, spring-data, jdbc, composite-key]
 toc: true
@@ -146,4 +146,4 @@ void mergeValueWithJdbcCompositeKey() {
 > - Id를 사용하지 않는 메서드들은 기본 CrudRepository의 기능을 활용할 수 있지만, `findById`, `deleteById` 따위는 직접 `Parameter`와 `ResultSet`을 매핑해줘야 한다.
 > - Kotlin에서는 `by` 키워드를 통해 인터페이스 위임이 가능해 보일러플레이트 코드를 줄일 수 있다.
 
-> 다음 글에서는 Spring Data JDBC 4.x에서의 예정 변화를 다룰 예정이다.
+> 다음 글에서는 Spring Data JDBC 4.x에서 예정된 복합키 관련 변화를 다룰 예정이다.
