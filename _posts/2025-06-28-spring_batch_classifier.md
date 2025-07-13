@@ -15,6 +15,8 @@ image:
 
 배치 작업을 하다 보면, 하나의 데이터 소스에서 **특정 기준에 따라 다른 처리가 필요한 경우**가 있다. 예를 들어, 쿼리 결과를 분기해서 서로 다른 DB 작업이나 API 호출 등으로 나누어야 할 경우, `ClassifierCompositeItemWriter`를 사용하면 효율적으로 처리할 수 있다. 
 
+Bulk Insert(Delete)의 용이한 처리를 위해 Classifier를 작성하여 활용하였다. 
+
 ---
 
 ## 기본 구조
