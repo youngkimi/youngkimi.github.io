@@ -1,10 +1,14 @@
 ---
 title: "Spring Data JDBC에서 복합키(Composite Key) 사용하기"
-date: 2025-07-11 17:00:00 +0900
+date: 2025-06-28 17:00:00 +/-TTTT
 categories: [Spring, Data, JDBC]
 tags: [spring, spring-data, jdbc, composite-key]
+math: true
 toc: true
 pin: true
+image:
+  path: ../assets/image/icons/spring-data.webp
+  alt: spring_data
 ---
 
 # Spring Data JDBC에서 복합키(Composite Key) 사용하기 (1)
